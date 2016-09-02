@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     var count = 0;
     var label:UILabel!
+    var label2:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,13 @@ class ViewController: UIViewController {
         self.view.addSubview(label)
         self.label = label
 
+        var label2 = UILabel()
+        label2.frame = CGRectMake(150, 200, 60, 60)
+        label2.text = "0"
+        
+        self.view.addSubview(label2)
+        self.label2 = label2
+        
         var button = UIButton()
         button.frame = CGRectMake(150, 250, 100, 60)
         button.setTitle("increment", forState: .Normal)
@@ -44,11 +52,22 @@ class ViewController: UIViewController {
     func incrementCount() {
         self.count += 1
         self.label.text = "\(self.count)"
+        self.label2.text = "\(self.count)"
+        changeBackground()
     }
 
     func decrementCount() {
         self.count -= 1
         self.label.text = "\(self.count)"
+        self.label2.text = "\(self.count)"
+        changeBackground()
+    }
+    func changeBackground() {
+        if(self.view.backgroundColor != UIColor.cyanColor()) {
+            self.view.backgroundColor = UIColor.cyanColor()
+        } else {
+            self.view.backgroundColor = UIColor.whiteColor()
+        }
     }
 }
 
